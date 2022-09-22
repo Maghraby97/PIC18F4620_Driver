@@ -1,0 +1,10 @@
+This project is about communication between 2 microcontrollers using SPI.
+
+MCU1:
+------
+Send one of two letters (M or S).
+if M is sent then 4 leds are turned on MCU2 and a string is immediately displayed 
+on LCD screen "Leds are ON" and a DC Motor is moved forward.
+
+if S is sent then the 4 leds are turned off on MCU2  and a string is immediately displayed 
+on LCD screen "Leds are OFF" and a DC Motor is moved reverse.

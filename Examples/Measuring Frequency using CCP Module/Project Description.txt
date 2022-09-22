@@ -1,0 +1,2 @@
+This project uses the CCP module in capture mode to measure the frequency of input signal provided on pin CCP1.
+The Freq value is printed on the LCD operating in 8bit mode.
