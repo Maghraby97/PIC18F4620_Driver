@@ -196,7 +196,7 @@
 #define MCAL_I2C_IS_STOP_BIT_DETECTED()   (SSPSTATbits.P)
 #define MCAL_I2C_IS_START_BIT_DETECTED()   (SSPSTATbits.S)
 #define MCAL_I2C_GET_R_W_BIT()        (SSPSTATbits.R_nW)
-#define MCAL_I2C_IS_SSPBUF_FULL ()      (SSPSTATbits.BF)
+#define MCAL_I2C_IS_SSPBUF_FULL()      (SSPSTATbits.BF)
 
 #define MCAL_I2C_IS_WRITE_COLLISION_DETECTED()  (SSPCON1bits.WCOL)
 #define MCAL_I2C_IS_RECEIVE_OVERFLOW_DETECTED() (SSPCON1bits.SSPOV)
@@ -223,14 +223,22 @@
 #define MCAL_I2C_CONFIG_ENABLE_MASTER_RECEIVE()    (SSPCON2bits.RCEN = 1)
 #define MCAL_I2C_CONFIG_DISABLEL_MASTER_RECEIVE()  (SSPCON2bits.RCEN = 0)
 
-#define MCAL_I2C_CONFIG_ENABLE_STOP_CONDITION()    (SSPCON2bits.RCEN = 1)
-#define MCAL_I2C_CONFIG_DISABLEL_STOP_CONDITION()  (SSPCON2bits.RCEN = 0)
+#define MCAL_I2C_CONFIG_SEND_STOP_CONDITION()    (SSPCON2bits.PEN = 1)
+#define MCAL_I2C_CONFIG_GET_STOP_CONDITION_STATUS()  (SSPCON2bits.PEN)
+#define MCAL_I2C_IS_THERE_STOP_CONDITION_DETECTED()  (SSPSTATbits.P)
 
-#define MCAL_I2C_CONFIG_ENABLE_REPEATED_START_CONDITION()    (SSPCON2bits.RSEN = 1)
-#define MCAL_I2C_CONFIG_DISABLEL_REPEATED_START_STOP_CONDITION()  (SSPCON2bits.RSEN = 0)
 
-#define MCAL_I2C_CONFIG_ENABLE_START_CONDITION()    (SSPCON2bits.SEN = 1)
-#define MCAL_I2C_CONFIG_DISABLE_START_CONDITION()   (SSPCON2bits.SEN = 0)
+
+
+#define MCAL_I2C_CONFIG_SEND_REPEATED_START_CONDITION()    (SSPCON2bits.RSEN = 1)
+#define MCAL_I2C_CONFIG_GET_REPEATED_START_STOP_CONDITION_STATUS()  (SSPCON2bits.RSEN)
+
+
+
+#define MCAL_I2C_CONFIG_SEND_START_CONDITION()    (SSPCON2bits.SEN = 1)
+#define MCAL_I2C_CONFIG_GET_START_CONDITION_STATUS()   (SSPCON2bits.SEN)
+#define MCAL_I2C_IS_THERE_START_CONDITION_DETECTED()  (SSPSTATbits.S)
+
 
 #define MCAL_I2C_CONFIG_ENABLE_CLOCK_STRETCH_ON_SLAVE()    (SSPCON2bits.SEN = 1)
 #define MCAL_I2C_CONFIG_DISABLE_CLOCK_STRETCH_ON_SLAVE()   (SSPCON2bits.SEN = 0)
@@ -302,6 +310,11 @@ STD_ReturnType mcal_i2c_slave_send_data(uint8_t data, mcal_ack_status_t *ack_sta
 STD_ReturnType mcal_i2c_slave_receive_data(uint8_t *data, mcal_ack_status_t ack_status);
 
 STD_ReturnType mcal_i2c_send_slave_address(uint8_t slave_address, uint8_t read_write_bit,mcal_ack_status_t *ack_status);
+
+STD_ReturnType mcal_i2c_send_start_condition(void);
+STD_ReturnType mcal_i2c_send_repeated_start_condition(void);
+STD_ReturnType mcal_i2c_send_stop_condition(void);
+
 
 
 

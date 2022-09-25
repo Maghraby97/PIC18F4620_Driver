@@ -1,72 +1,53 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"268 ./MCAL_Layer/I2C/MCAL_I2C.h
-[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 268: typedef struct{
+"276 ./MCAL_Layer/I2C/MCAL_I2C.h
+[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 276: typedef struct{
 [s S296 `ul 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
 [n S296 . clock_speed ack_Sequence_enable receive_enable stop_condition_enable start_condition_enable repeated_start_condition_enable ]
 "30 application.c
 [; ;application.c: 30: mcal_i2c_config_t i2c_ob = {
 [c E3654 6 7 8 11 14 15 .. ]
 [n E3654 . MCAL_I2C_Slave_Mode_7Bit_Address MCAL_I2C_Slave_Mode_10Bit_Address MCAL_I2C_Master_Mode MCAL_I2C_Firmware_Controlled_Master_Mode MCAL_I2C_Slave_Mode_7Bit_Address_Start_Stop_Interrupts_Enabled MCAL_I2C_Slave_Mode_10Bit_Address_Start_Stop_Interrupts_Enabled  ]
-"278 ./MCAL_Layer/I2C/MCAL_I2C.h
-[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 278: typedef struct{
+"286 ./MCAL_Layer/I2C/MCAL_I2C.h
+[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 286: typedef struct{
 [s S297 `uc 1 `uc 1 `uc 1 ]
 [n S297 . slave_address general_call_enable clock_stretch_enable ]
-"284
-[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 284: typedef struct{
+"292
+[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 292: typedef struct{
 [s S298 `E3654 1 `uc 1 `*S296 1 `*S297 1 ]
 [n S298 . i2c_mode serial_port_enable i2c_master i2c_slave ]
 "38 application.c
 [; ;application.c: 38: mcal_ack_status_t ack_status = NOT_ACK;
 [c E3662 0 1 .. ]
 [n E3662 . ACK NOT_ACK  ]
+"69 ./MCAL_Layer/ADC/../../MCAL_Layer/GPIO/hal_gpio.h
+[s S272 :3 `uc 1 :3 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S272 . port pin direction logic ]
+"40 application.c
+[; ;application.c: 40: Pin_Config_t rc3_ = {
+[c E2818 0 1 2 3 4 .. ]
+[n E2818 . PORTA_INDEX PORTB_INDEX PORTC_INDEX PORTD_INDEX PORTE_INDEX  ]
+[c E2808 0 1 2 3 4 5 6 7 .. ]
+[n E2808 . PIN0 PIN1 PIN2 PIN3 PIN4 PIN5 PIN6 PIN7  ]
+[c E2804 0 1 .. ]
+[n E2804 . OUTPUT INPUT  ]
+[c E2800 0 1 .. ]
+[n E2800 . LOW HIGH  ]
 [p mainexit ]
-"295 ./MCAL_Layer/I2C/MCAL_I2C.h
-[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 295: STD_ReturnType mcal_i2c_initialize(mcal_i2c_config_t *i2c_obj);
+"303 ./MCAL_Layer/I2C/MCAL_I2C.h
+[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 303: STD_ReturnType mcal_i2c_initialize(mcal_i2c_config_t *i2c_obj);
 [v _mcal_i2c_initialize `(uc ~T0 @X0 0 ef1`*S298 ]
-"4808 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\proc\pic18f4620.h
-[s S188 :2 `uc 1 :1 `uc 1 ]
-[n S188 . . R_NOT_W ]
-"4812
-[s S189 :5 `uc 1 :1 `uc 1 ]
-[n S189 . . D_NOT_A ]
-"4816
-[s S190 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S190 . BF UA R_nW S P D_nA CKE SMP ]
-"4826
-[s S191 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S191 . . R . D ]
-"4832
-[s S192 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S192 . . W . A ]
-"4838
-[s S193 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S193 . . nW . nA ]
-"4844
-[s S194 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S194 . . R_W . D_A ]
-"4850
-[s S195 :2 `uc 1 :1 `uc 1 ]
-[n S195 . . NOT_WRITE ]
-"4854
-[s S196 :5 `uc 1 :1 `uc 1 ]
-[n S196 . . NOT_ADDRESS ]
-"4858
-[s S197 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S197 . . nWRITE . nADDRESS ]
-"4864
-[s S198 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S198 . . RW START STOP DA ]
-"4871
-[s S199 :2 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 ]
-[n S199 . . NOT_W . NOT_A ]
-"4807
-[u S187 `S188 1 `S189 1 `S190 1 `S191 1 `S192 1 `S193 1 `S194 1 `S195 1 `S196 1 `S197 1 `S198 1 `S199 1 ]
-[n S187 . . . . . . . . . . . . . ]
-"4878
-[v _SSPSTATbits `VS187 ~T0 @X0 0 e@4039 ]
-"304 ./MCAL_Layer/I2C/MCAL_I2C.h
-[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 304: STD_ReturnType mcal_i2c_send_slave_address(uint8_t slave_address, uint8_t read_write_bit,mcal_ack_status_t *ack_status);
+"312
+[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 312: STD_ReturnType mcal_i2c_send_slave_address(uint8_t slave_address, uint8_t read_write_bit,mcal_ack_status_t *ack_status);
 [v _mcal_i2c_send_slave_address `(uc ~T0 @X0 0 ef3`uc`uc`*E3662 ]
+"306
+[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 306: STD_ReturnType mcal_i2c_master_send_data(uint8_t data, mcal_ack_status_t *ack_status);
+[v _mcal_i2c_master_send_data `(uc ~T0 @X0 0 ef2`uc`*E3662 ]
+"315
+[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 315: STD_ReturnType mcal_i2c_send_repeated_start_condition(void);
+[v _mcal_i2c_send_repeated_start_condition `(uc ~T0 @X0 0 ef ]
+"316
+[; ;./MCAL_Layer/I2C/MCAL_I2C.h: 316: STD_ReturnType mcal_i2c_send_stop_condition(void);
+[v _mcal_i2c_send_stop_condition `(uc ~T0 @X0 0 ef ]
 [v F2768 `(v ~T0 @X0 1 tf1`ul ]
 "12 C:/Program Files/Microchip/MPLABX/v6.00/packs/Microchip/PIC18Fxxxx_DFP/1.3.36/xc8\pic\include\builtins.h
 [v __delay `JF2768 ~T0 @X0 0 e ]
@@ -379,40 +360,75 @@ Version 4.0 HI-TECH Software Intermediate Code
 [i _ack_status
 . `E3662 1
 ]
-[v $root$_main `(v ~T0 @X0 0 e ]
 "40
-[; ;application.c: 40: int main(void){
+[; ;application.c: 40: Pin_Config_t rc3_ = {
+[v _rc3_ `S272 ~T0 @X0 1 e ]
+[i _rc3_
+:U ..
+:U ..
+-> . `E2818 2 `uc
+-> . `E2808 3 `uc
+-> . `E2804 1 `uc
+-> . `E2800 0 `uc
+..
+..
+]
+"47
+[; ;application.c: 47: Pin_Config_t rc4_ = {
+[v _rc4_ `S272 ~T0 @X0 1 e ]
+[i _rc4_
+:U ..
+:U ..
+-> . `E2818 2 `uc
+-> . `E2808 4 `uc
+-> . `E2804 1 `uc
+-> . `E2800 0 `uc
+..
+..
+]
+[v $root$_main `(v ~T0 @X0 0 e ]
+"55
+[; ;application.c: 55: int main(void){
 [v _main `(i ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"41
-[; ;application.c: 41:     mcal_i2c_initialize(&i2c_ob);
+"56
+[; ;application.c: 56:     mcal_i2c_initialize(&i2c_ob);
 [e ( _mcal_i2c_initialize (1 &U _i2c_ob ]
-"43
-[; ;application.c: 43:     SSPSTATbits.SMP = 1;
-[e = . . _SSPSTATbits 2 7 -> -> 1 `i `uc ]
-"44
-[; ;application.c: 44:     while(1){
+"59
+[; ;application.c: 59:     while(1){
 [e :U 301 ]
 {
-"45
-[; ;application.c: 45:         mcal_i2c_send_slave_address(0x04,1,&ack_status);
-[e ( _mcal_i2c_send_slave_address (3 , , -> -> 4 `i `uc -> -> 1 `i `uc &U _ack_status ]
-"46
-[; ;application.c: 46:         _delay((unsigned long)((1000)*(4000000/4000.0)));
+"63
+[; ;application.c: 63:         mcal_i2c_send_slave_address(0x04,0,&ack_status);
+[e ( _mcal_i2c_send_slave_address (3 , , -> -> 4 `i `uc -> -> 0 `i `uc &U _ack_status ]
+"65
+[; ;application.c: 65:         mcal_i2c_master_send_data(0x77,&ack_status);
+[e ( _mcal_i2c_master_send_data (2 , -> -> 119 `i `uc &U _ack_status ]
+"67
+[; ;application.c: 67:         mcal_i2c_send_repeated_start_condition();
+[e ( _mcal_i2c_send_repeated_start_condition ..  ]
+"69
+[; ;application.c: 69:         mcal_i2c_master_send_data(0x00,&ack_status);
+[e ( _mcal_i2c_master_send_data (2 , -> -> 0 `i `uc &U _ack_status ]
+"70
+[; ;application.c: 70:         mcal_i2c_send_stop_condition();
+[e ( _mcal_i2c_send_stop_condition ..  ]
+"71
+[; ;application.c: 71:         _delay((unsigned long)((1000)*(4000000/4000.0)));
 [e ( __delay (1 -> * -> -> 1000 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"48
-[; ;application.c: 48:     }
+"73
+[; ;application.c: 73:     }
 }
 [e :U 300 ]
 [e $U 301  ]
 [e :U 302 ]
-"52
-[; ;application.c: 52:     return (0);
+"77
+[; ;application.c: 77:     return (0);
 [e ) -> 0 `i ]
 [e $UE 299  ]
-"53
-[; ;application.c: 53: }
+"78
+[; ;application.c: 78: }
 [e :UE 299 ]
 }

@@ -7,7 +7,7 @@
 
 
 #include "mcal_interrupt_manager.h"
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 4000000
 
 static uint8_t RB4_Flag = 1;
 static uint8_t RB5_Flag = 1;
