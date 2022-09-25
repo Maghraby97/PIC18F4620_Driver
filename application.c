@@ -37,12 +37,37 @@ mcal_i2c_config_t i2c_ob = {
 
 mcal_ack_status_t ack_status = NOT_ACK;
 
+Pin_Config_t rc3_ = {
+    .direction = INPUT,
+    .pin = PIN3,
+    .port = PORTC_INDEX,
+    .logic = LOW
+
+};
+Pin_Config_t rc4_ = {
+    .direction = INPUT,
+    .pin = PIN4,
+    .port = PORTC_INDEX,
+    .logic = LOW
+
+};
+
 int main(void){  
     mcal_i2c_initialize(&i2c_ob);
     
     
     while(1){
-        mcal_i2c_send_slave_address(0x04,1,&ack_status);
+        /*Slave address 0x04
+         write bit = 0
+         */
+        mcal_i2c_send_slave_address(0x04,0,&ack_status);
+        //mcal_i2c_send_stop_condition();
+        mcal_i2c_master_send_data(0x77,&ack_status);
+        
+        mcal_i2c_send_repeated_start_condition();
+        
+        mcal_i2c_master_send_data(0x00,&ack_status);
+        mcal_i2c_send_stop_condition();
         __delay_ms(1000);
        
     }

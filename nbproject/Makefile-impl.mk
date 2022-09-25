@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=Embedded Projects Ahmed Abdelghafar course
+PROJECTNAME=PIC18F4620_Driver
 
 # Active Configuration
 DEFAULTCONF=default

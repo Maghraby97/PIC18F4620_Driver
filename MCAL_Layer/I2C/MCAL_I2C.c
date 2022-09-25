@@ -11,11 +11,6 @@
 #include "MCAL_I2C.h"
 
 
-static inline STD_ReturnType mcal_i2c_send_start_condition(void);
-static inline STD_ReturnType mcal_i2c_send_stop_condition(void);
-static inline STD_ReturnType mcal_i2c_send_repeated_start_condition(void);
-
-
 
 
 
@@ -90,32 +85,32 @@ STD_ReturnType mcal_i2c_initialize(mcal_i2c_config_t *i2c_obj){
             
             /*Enable or disable stop condition*/
             if(i2c_obj->i2c_master->stop_condition_enable == MCAL_I2C_MASTER_STOP_CONDITION){
-                MCAL_I2C_CONFIG_ENABLE_STOP_CONDITION();
+                //MCAL_I2C_CONFIG_ENABLE_STOP_CONDITION();
             }
             else if(i2c_obj->i2c_master->stop_condition_enable == MCAL_I2C_MASTER_STOP_CONDITION_IDLE){
-                MCAL_I2C_CONFIG_DISABLEL_STOP_CONDITION();
+                //MCAL_I2C_CONFIG_DISABLEL_STOP_CONDITION();
             }
             else{
                 status = E_NOT_OK;
             }
-
+            
             /*Enable or disable start condition*/
             if(i2c_obj->i2c_master->start_condition_enable == MCAL_I2C_MASTER_START_CONDITION){
-                MCAL_I2C_CONFIG_ENABLE_START_CONDITION();
+                // MCAL_I2C_CONFIG_ENABLE_START_CONDITION();
             }
             else if(i2c_obj->i2c_master->start_condition_enable == MCAL_I2C_MASTER_START_CONDITION_IDLE){
-                MCAL_I2C_CONFIG_DISABLE_START_CONDITION();
+                // MCAL_I2C_CONFIG_DISABLE_START_CONDITION();
             }
             else{
                 status = E_NOT_OK;
             }
-
+            
             /*Enable or disable repeated stasrt condition*/
             if(i2c_obj->i2c_master->repeated_start_condition_enable == MCAL_I2C_MASTER_REPEATED_START_CONDITION){
-                MCAL_I2C_CONFIG_ENABLE_REPEATED_START_CONDITION();
+                // MCAL_I2C_CONFIG_ENABLE_REPEATED_START_CONDITION();
             }
             else if(i2c_obj->i2c_master->repeated_start_condition_enable == MCAL_I2C_MASTER_REPEATED_START_CONDITION_IDLE){
-                MCAL_I2C_CONFIG_DISABLEL_REPEATED_START_STOP_CONDITION();
+                //MCAL_I2C_CONFIG_DISABLEL_REPEATED_START_STOP_CONDITION();
             }
             else{
                 status = E_NOT_OK;
@@ -135,7 +130,7 @@ STD_ReturnType mcal_i2c_initialize(mcal_i2c_config_t *i2c_obj){
     else{
         status = E_NOT_OK;
     }
-
+    
     return status;
 }
 STD_ReturnType mcal_i2c_deinitialize(mcal_i2c_config_t *i2c_obj){
@@ -146,7 +141,7 @@ STD_ReturnType mcal_i2c_deinitialize(mcal_i2c_config_t *i2c_obj){
     else{
         status = E_NOT_OK;
     }
-
+    
     return status;
     
     
@@ -155,8 +150,28 @@ STD_ReturnType mcal_i2c_deinitialize(mcal_i2c_config_t *i2c_obj){
 STD_ReturnType mcal_i2c_send_slave_address(uint8_t slave_address, uint8_t read_write_bit,mcal_ack_status_t *ack_status){
     STD_ReturnType status = E_OK;
     
-    SSPBUF = (slave_address << 1) | (read_write_bit);
+    status = mcal_i2c_send_start_condition();
     
+    
+    
+    /*Write the slave address into the SSPBUF*/
+    if(status == E_OK){
+        SSPBUF = (slave_address << 1) | (read_write_bit);
+    }
+    
+    /*Wait here until SSPUF is empty*/
+    while(MCAL_I2C_IS_SSPBUF_FULL() == MCAL_I2C_SSPBUF_IS_FULL);
+    PIR1bits.SSPIF = 0;
+    
+    if(MCAL_I2C_IS_ACK_RECEIVED() == MCAL_I2C_ACK_RECEIVED){
+        status = E_OK;
+    }
+    else{
+        status = E_NOT_OK;
+    }
+    
+    /*Clear the SSPIF flag manually*/
+    PIR1bits.SSPIF = 0;
     
     return status;
 }
@@ -164,12 +179,23 @@ STD_ReturnType mcal_i2c_send_slave_address(uint8_t slave_address, uint8_t read_w
 STD_ReturnType mcal_i2c_master_send_data(uint8_t data, mcal_ack_status_t *ack_status){
     STD_ReturnType status = E_OK;
     if(ack_status != NULL){
+        SSPBUF = data;
         
+        while(MCAL_I2C_IS_SSPBUF_FULL() == MCAL_I2C_SSPBUF_IS_FULL);
+        
+        PIR1bits.SSPIF = 0;
+        
+        if(MCAL_I2C_IS_ACK_RECEIVED() == MCAL_I2C_ACK_RECEIVED){
+            status = E_OK;
+        }
+        else{
+            status = E_NOT_OK;
+        }
     }
     else{
         status = E_NOT_OK;
     }
-
+    
     return status;
     
 }
@@ -198,16 +224,67 @@ STD_ReturnType mcal_i2c_slave_receive_data(uint8_t *data, mcal_ack_status_t ack_
 
 
 
-static inline STD_ReturnType mcal_i2c_send_start_condition(void){
+STD_ReturnType mcal_i2c_send_start_condition(void){
+    STD_ReturnType status = E_OK;
+    
+    /*This function like macro sends a start condition*/
+    MCAL_I2C_CONFIG_SEND_START_CONDITION();
+    
+    /*Wait here until SEN bit is cleared by hardware , if SEN is cleared then Start codition has been sent
+     successfully
+     */
+    
+    
+    while(MCAL_I2C_CONFIG_GET_START_CONDITION_STATUS());
+    
+    /*Clear the SSPIF flag*/
+    PIR1bits.SSPIF = 0;
+    if(MCAL_I2C_IS_THERE_START_CONDITION_DETECTED() == MCAL_I2C_START_BIT_DETECTED){
+        status = E_OK;
+    }
+    else{
+        status = E_NOT_OK;
+    }
     
     
     
+    return status;
 }
-static inline STD_ReturnType mcal_i2c_send_stop_condition(void){
+STD_ReturnType mcal_i2c_send_repeated_start_condition(void){
+    STD_ReturnType status = E_OK;
+    /*This function like macro sends a repeated start condition*/
+    MCAL_I2C_CONFIG_SEND_REPEATED_START_CONDITION();
     
+    /*Wait here until SEN bit is cleared by hardware , if SEN is cleared then Start codition has been sent
+     successfully
+     */
+    while(MCAL_I2C_CONFIG_GET_REPEATED_START_STOP_CONDITION_STATUS() == 1);
     
+    /*Clear the SSPIF flag*/
+    PIR1bits.SSPIF = 0;
+    
+    return status;
 }
-static inline STD_ReturnType mcal_i2c_send_repeated_start_condition(void){
+STD_ReturnType mcal_i2c_send_stop_condition(void){
     
+    STD_ReturnType status = E_OK;
+    /*This function like macro sends a stop condition*/
+    MCAL_I2C_CONFIG_SEND_STOP_CONDITION();
+    
+    /*Wait here until SEN bit is cleared by hardware , if SEN is cleared then Start codition has been sent
+     successfully
+     */
+    while(MCAL_I2C_CONFIG_GET_STOP_CONDITION_STATUS() == 1);
+    
+    /*Clear the SSPIF flag*/
+    PIR1bits.SSPIF = 0;
+    if(MCAL_I2C_IS_THERE_STOP_CONDITION_DETECTED() == MCAL_I2C_STOP_BIT_DETECTED){
+        status = E_OK;
+    }
+    else{
+        status = E_NOT_OK;
+    }
+    
+    return status;
     
 }
