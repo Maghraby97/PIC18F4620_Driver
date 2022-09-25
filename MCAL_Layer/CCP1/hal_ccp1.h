@@ -13,7 +13,7 @@
 #include "../mcal_std_types.h"
 #include "../../MCAL_Layer/Interrupt/mcal_internal_interrupt.h"
 /*Section: Macro Declarations*/
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 4000000
 
 #define CCP1_INSTANCE  ((uint8_t)0)
 #define CCP2_INSTANCE  ((uint8_t)1)

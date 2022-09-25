@@ -855,8 +855,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/EUSART/hal_eusart.c: 168:                 (TXSTAbits.BRGH = 0);
 [e = . . _TXSTAbits 0 2 -> -> 0 `i `uc ]
 "169
-[; ;MCAL_Layer/EUSART/hal_eusart.c: 169:                 baudrate_val = ((8000000/(float)eusart_obj->baudrate_value)/64)-1;
-[e = _baudrate_val - / / -> -> 8000000 `l `f -> . *U _eusart_obj 1 `f -> -> 64 `i `f -> -> 1 `i `f ]
+[; ;MCAL_Layer/EUSART/hal_eusart.c: 169:                 baudrate_val = ((4000000/(float)eusart_obj->baudrate_value)/64)-1;
+[e = _baudrate_val - / / -> -> 4000000 `l `f -> . *U _eusart_obj 1 `f -> -> 64 `i `f -> -> 1 `i `f ]
 "170
 [; ;MCAL_Layer/EUSART/hal_eusart.c: 170:                 SPBRG = (uint8)((uint32)baudrate_val);
 [e = _SPBRG -> -> _baudrate_val `ui `uc ]
@@ -879,8 +879,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/EUSART/hal_eusart.c: 177:                 (TXSTAbits.BRGH = 1);
 [e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
 "178
-[; ;MCAL_Layer/EUSART/hal_eusart.c: 178:                 baudrate_val = ((8000000/(float)eusart_obj->baudrate_value)/16)-1;
-[e = _baudrate_val - / / -> -> 8000000 `l `f -> . *U _eusart_obj 1 `f -> -> 16 `i `f -> -> 1 `i `f ]
+[; ;MCAL_Layer/EUSART/hal_eusart.c: 178:                 baudrate_val = ((4000000/(float)eusart_obj->baudrate_value)/16)-1;
+[e = _baudrate_val - / / -> -> 4000000 `l `f -> . *U _eusart_obj 1 `f -> -> 16 `i `f -> -> 1 `i `f ]
 "179
 [; ;MCAL_Layer/EUSART/hal_eusart.c: 179:                 SPBRG = (uint8)((uint32)baudrate_val);
 [e = _SPBRG -> -> _baudrate_val `ui `uc ]
@@ -903,8 +903,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/EUSART/hal_eusart.c: 186:                 (TXSTAbits.BRGH = 0);
 [e = . . _TXSTAbits 0 2 -> -> 0 `i `uc ]
 "187
-[; ;MCAL_Layer/EUSART/hal_eusart.c: 187:                 baudrate_val = ((8000000/(float)eusart_obj->baudrate_value)/16)-1;
-[e = _baudrate_val - / / -> -> 8000000 `l `f -> . *U _eusart_obj 1 `f -> -> 16 `i `f -> -> 1 `i `f ]
+[; ;MCAL_Layer/EUSART/hal_eusart.c: 187:                 baudrate_val = ((4000000/(float)eusart_obj->baudrate_value)/16)-1;
+[e = _baudrate_val - / / -> -> 4000000 `l `f -> . *U _eusart_obj 1 `f -> -> 16 `i `f -> -> 1 `i `f ]
 "188
 [; ;MCAL_Layer/EUSART/hal_eusart.c: 188:                 SPBRG = (uint8)((uint32)baudrate_val);
 [e = _SPBRG -> -> _baudrate_val `ui `uc ]
@@ -927,8 +927,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/EUSART/hal_eusart.c: 195:                 (TXSTAbits.BRGH = 1);
 [e = . . _TXSTAbits 0 2 -> -> 1 `i `uc ]
 "196
-[; ;MCAL_Layer/EUSART/hal_eusart.c: 196:                 baudrate_val = ((8000000/(float)eusart_obj->baudrate_value)/4)-1;
-[e = _baudrate_val - / / -> -> 8000000 `l `f -> . *U _eusart_obj 1 `f -> -> 4 `i `f -> -> 1 `i `f ]
+[; ;MCAL_Layer/EUSART/hal_eusart.c: 196:                 baudrate_val = ((4000000/(float)eusart_obj->baudrate_value)/4)-1;
+[e = _baudrate_val - / / -> -> 4000000 `l `f -> . *U _eusart_obj 1 `f -> -> 4 `i `f -> -> 1 `i `f ]
 "197
 [; ;MCAL_Layer/EUSART/hal_eusart.c: 197:                 SPBRG = (uint8)((uint32)baudrate_val);
 [e = _SPBRG -> -> _baudrate_val `ui `uc ]
@@ -948,8 +948,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/EUSART/hal_eusart.c: 203:                 (BAUDCONbits.BRG16 = 0);
 [e = . . _BAUDCONbits 0 3 -> -> 0 `i `uc ]
 "204
-[; ;MCAL_Layer/EUSART/hal_eusart.c: 204:                 baudrate_val = ((8000000/(float)eusart_obj->baudrate_value)/4)-1;
-[e = _baudrate_val - / / -> -> 8000000 `l `f -> . *U _eusart_obj 1 `f -> -> 4 `i `f -> -> 1 `i `f ]
+[; ;MCAL_Layer/EUSART/hal_eusart.c: 204:                 baudrate_val = ((4000000/(float)eusart_obj->baudrate_value)/4)-1;
+[e = _baudrate_val - / / -> -> 4000000 `l `f -> . *U _eusart_obj 1 `f -> -> 4 `i `f -> -> 1 `i `f ]
 "205
 [; ;MCAL_Layer/EUSART/hal_eusart.c: 205:                 SPBRG = (uint8)((uint32)baudrate_val);
 [e = _SPBRG -> -> _baudrate_val `ui `uc ]
@@ -969,8 +969,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;MCAL_Layer/EUSART/hal_eusart.c: 211:                 (BAUDCONbits.BRG16 = 1);
 [e = . . _BAUDCONbits 0 3 -> -> 1 `i `uc ]
 "212
-[; ;MCAL_Layer/EUSART/hal_eusart.c: 212:                 baudrate_val = ((8000000/(float)eusart_obj->baudrate_value)/4)-1;
-[e = _baudrate_val - / / -> -> 8000000 `l `f -> . *U _eusart_obj 1 `f -> -> 4 `i `f -> -> 1 `i `f ]
+[; ;MCAL_Layer/EUSART/hal_eusart.c: 212:                 baudrate_val = ((4000000/(float)eusart_obj->baudrate_value)/4)-1;
+[e = _baudrate_val - / / -> -> 4000000 `l `f -> . *U _eusart_obj 1 `f -> -> 4 `i `f -> -> 1 `i `f ]
 "213
 [; ;MCAL_Layer/EUSART/hal_eusart.c: 213:                 SPBRG = (uint8)((uint32)baudrate_val);
 [e = _SPBRG -> -> _baudrate_val `ui `uc ]

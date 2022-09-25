@@ -38,4 +38,6 @@ MCAL_Layer/Timer3/hal_timer3_config.h  \
 MCAL_Layer/CCP1/hal_ccp1.h  \
 MCAL_Layer/EUSART/hal_eusart.h  \
 MCAL_Layer/SPI/hal_spi.h  \
-MCAL_Layer/SPI/hal_spi_cfg.h 
+MCAL_Layer/SPI/hal_spi_cfg.h  \
+MCAL_Layer/I2C/MCAL_I2C.h  \
+MCAL_Layer/I2C/MCAL_I2C_Config.h 

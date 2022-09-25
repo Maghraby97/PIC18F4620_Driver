@@ -4934,7 +4934,7 @@ static STD_ReturnType eusart_baudrate_configuration_bits_init(const eusart_t *eu
                 (TXSTAbits.SYNC = 0);
                 (BAUDCONbits.BRG16 = 0);
                 (TXSTAbits.BRGH = 0);
-                baudrate_val = ((8000000/(float)eusart_obj->baudrate_value)/64)-1;
+                baudrate_val = ((4000000/(float)eusart_obj->baudrate_value)/64)-1;
                 SPBRG = (uint8)((uint32)baudrate_val);
                 SPBRGH = (uint8)(((uint32)baudrate_val) >> 8);
                 break;
@@ -4943,7 +4943,7 @@ static STD_ReturnType eusart_baudrate_configuration_bits_init(const eusart_t *eu
                 (TXSTAbits.SYNC = 0);
                 (BAUDCONbits.BRG16 = 0);
                 (TXSTAbits.BRGH = 1);
-                baudrate_val = ((8000000/(float)eusart_obj->baudrate_value)/16)-1;
+                baudrate_val = ((4000000/(float)eusart_obj->baudrate_value)/16)-1;
                 SPBRG = (uint8)((uint32)baudrate_val);
                 SPBRGH = (uint8)(((uint32)baudrate_val) >> 8);
                 break;
@@ -4952,7 +4952,7 @@ static STD_ReturnType eusart_baudrate_configuration_bits_init(const eusart_t *eu
                 (TXSTAbits.SYNC = 0);
                 (BAUDCONbits.BRG16 = 1);
                 (TXSTAbits.BRGH = 0);
-                baudrate_val = ((8000000/(float)eusart_obj->baudrate_value)/16)-1;
+                baudrate_val = ((4000000/(float)eusart_obj->baudrate_value)/16)-1;
                 SPBRG = (uint8)((uint32)baudrate_val);
                 SPBRGH = (uint8)(((uint32)baudrate_val) >> 8);
                 break;
@@ -4961,7 +4961,7 @@ static STD_ReturnType eusart_baudrate_configuration_bits_init(const eusart_t *eu
                 (TXSTAbits.SYNC = 0);
                 (BAUDCONbits.BRG16 = 1);
                 (TXSTAbits.BRGH = 1);
-                baudrate_val = ((8000000/(float)eusart_obj->baudrate_value)/4)-1;
+                baudrate_val = ((4000000/(float)eusart_obj->baudrate_value)/4)-1;
                 SPBRG = (uint8)((uint32)baudrate_val);
                 SPBRGH = (uint8)(((uint32)baudrate_val) >> 8);
                 break;
@@ -4969,7 +4969,7 @@ static STD_ReturnType eusart_baudrate_configuration_bits_init(const eusart_t *eu
             case EUSART_Synchronous_8bit:
                 (TXSTAbits.SYNC = 1);
                 (BAUDCONbits.BRG16 = 0);
-                baudrate_val = ((8000000/(float)eusart_obj->baudrate_value)/4)-1;
+                baudrate_val = ((4000000/(float)eusart_obj->baudrate_value)/4)-1;
                 SPBRG = (uint8)((uint32)baudrate_val);
                 SPBRGH = (uint8)(((uint32)baudrate_val) >> 8);
                 break;
@@ -4977,7 +4977,7 @@ static STD_ReturnType eusart_baudrate_configuration_bits_init(const eusart_t *eu
             case EUSART_Synchronous_16bit:
                 (TXSTAbits.SYNC = 1);
                 (BAUDCONbits.BRG16 = 1);
-                baudrate_val = ((8000000/(float)eusart_obj->baudrate_value)/4)-1;
+                baudrate_val = ((4000000/(float)eusart_obj->baudrate_value)/4)-1;
                 SPBRG = (uint8)((uint32)baudrate_val);
                 SPBRGH = (uint8)(((uint32)baudrate_val) >> 8);
                 break;
